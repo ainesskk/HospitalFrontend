@@ -1,0 +1,42 @@
+.search-patient-container {
+    width: 70%;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid #cacaca;
+    background: #fafafa;
+    border-radius: 15px;
+    padding: 1vw 0 1vw 0;
+    transition: background ease-in 0.2s;
+}
+
+.search-patient-container:hover{
+    background: #f3f3f3;
+
+    transition: background ease-in 0.2s;
+}
+
+.search-patient-fio{
+    width: 40%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    padding: 0 1vw;
+}
+
+.search-patient-birthday-container{
+    width: 30%;
+    border-left:  2px solid #cacaca;
+    border-right:  2px solid #cacaca;
+}
+
+.search-patient-birthday{
+    padding: 0 1vw;
+}
+
+.search-patient-passport{
+    width: 30%;
+    padding: 0 1vw;
+}
+

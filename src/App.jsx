@@ -1,7 +1,7 @@
 import './App.css'
 import {Routes, Route} from 'react-router-dom';
 import Login from "./Authorization/Login.jsx";
-import SearchPatient from "./Search/SearchPatient.jsx";
+import Search from "./Search/Search.jsx";
 
 function App() {
 
@@ -9,7 +9,7 @@ function App() {
     <>
         <Routes>
             <Route path="/" element={<Login />} />
-            <Route path="/search" element={<SearchPatient />} />
+            <Route path="/search" element={<Search />} />
         </Routes>
     </>
   )
