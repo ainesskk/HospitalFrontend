@@ -1,0 +1,46 @@
+
+.login-form{
+    font-family: Arial, sans-serif;
+    width: 30%;
+    margin: 0 auto;
+    padding: 0;
+    font-size: 1vw;
+    position : absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+h2{
+     color: #303030;
+ }
+
+.login-form .login-div{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-form .login-div input{
+    width: 100%;
+    padding: 1vw 1vw 1vw 1vw;
+    margin: 1vw;
+    font-size: 1.2vw;
+}
+
+.login-form .login-div input::placeholder{
+    font-size: 1.2vw;
+}
+
+.login-form .login-div button{
+    width: 80%;
+    padding: 1vw 1vw 1vw 1vw;
+    margin: 1vw;
+    border-radius: 15px;
+    font-size: 1.2vw;
+    font-weight: 400;
+}
+
+
+

@@ -1,0 +1,37 @@
+.search-form {
+    width: 70%;
+    margin: 0 auto;
+    display: flex;
+    align-items: stretch; /* Убедимся, что дети будут растянуты по высоте контейнера */
+    height: 4vw; /* Устанавливаем фиксированную высоту */
+}
+
+.search-form input {
+    margin: 0;
+    width: 90%;
+    height: 100%;
+    border: 2px solid #0097B3;
+    border-right: none;
+    border-bottom-right-radius: 0;
+    border-top-right-radius: 0;
+    box-sizing: border-box; /* Включаем границы и паддинги в размер элемента */
+}
+
+.search-form button {
+    width: 10%;
+    height: 100%; /* Устанавливаем высоту 100% от высоты контейнера */
+    border: 2px solid #0097B3;
+    border-left: none;
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+    box-sizing: border-box; /* Включаем границы и паддинги в размер элемента */
+    padding: 0; /* Убираем паддинги */
+    display: flex;
+    justify-content: center;
+    align-items: center; /* Центрируем текст внутри кнопки */
+}
+
+.search-img-container img{
+    height: 2vw;
+}
+

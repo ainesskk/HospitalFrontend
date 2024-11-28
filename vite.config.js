@@ -6,5 +6,9 @@ export default defineConfig({
   plugins: [react()],
   resolve: {
     extensions: ['.js', '.jsx']
-  }
+  },
+  server: {
+    host: "localhost",
+    port: 5555,
+  },
 })
