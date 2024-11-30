@@ -1,16 +1,22 @@
-import "./SearchPatient.css"
+import "./SearchPatient.css";
+import { useNavigate } from "react-router-dom";
 
-export default function SearchPatient() {
+export default function SearchPatient({ userData }) {
+    const navigate = useNavigate();
+
+    const handleClick = () => {
+        navigate(`/patient/${userData.id}`);
+    };
+
     return (
         <>
-            <div className="search-patient-container">
-                <p className="search-patient-fio">Иван Иванович Иванов</p>
+            <div className="search-patient-container" id={userData.id} onClick={handleClick}>
+                <p className="search-patient-fio">{userData.fio}</p>
                 <div className="search-patient-birthday-container">
-
-                    <p className="search-patient-birthday">30.12.2000</p>
+                    <p className="search-patient-birthday">{userData.birthDate}</p>
                 </div>
-                <p className="search-patient-passport">9099 345345</p>
+                <p className="search-patient-passport">{userData.passport}</p>
             </div>
         </>
-    )
+    );
 }

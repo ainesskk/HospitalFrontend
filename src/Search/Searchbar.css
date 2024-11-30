@@ -21,8 +21,8 @@
     width: 10%;
     height: 100%;
     border-left: none;
-    border-top-right-radius: 15px;
-    border-bottom-right-radius: 15px;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
     box-sizing: border-box;
     padding: 0;
     display: flex;
