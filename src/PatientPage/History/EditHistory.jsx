@@ -1,14 +1,14 @@
 import { useEffect, useState } from "react";
-import { getHistoryInfoRequest, HistoryEditRequest } from "../api/patiensApi.jsx";
+import { getHistoryInfoRequest, HistoryEditRequest } from "../../api/patiensApi.jsx";
 import { useParams } from "react-router-dom";
-import Arrow from "../Arrow.jsx";
-import {getDoctorInfoRequest} from "../api/userApi.jsx";
+import Arrow from "../../Arrow/Arrow.jsx";
 import DoctorSelect from "../DoctorSelect.jsx";
 
 export default function EditHistory() {
-    const { historyId} = useParams();
+    const { historyId } = useParams();
     const [newHistory, setNewHistory] = useState({
         diagnosis: "",
+        userId: "",
         departureDate: "",
         lifeAnamnesis: "",
         diseaseAnamnesis: "",
@@ -22,21 +22,11 @@ export default function EditHistory() {
         const fetchHistoryInfo = async () => {
             const data = await getHistoryInfoRequest(historyId);
             setNewHistory(data);
+            setDoctorId(data.userId);
         };
 
-        // const fetchDoctorInfo = async () => {
-        //     const data = await getDoctorInfoRequest();
-        //     setDoctors(data);
-        // }
-        //
-        // fetchDoctorInfo();
         fetchHistoryInfo();
     }, [historyId]);
-
-    useEffect(() => {
-        setDoctorId(doctorId);
-        console.log(doctorId);
-    }, [doctorId])
 
     const handleChange = (e) => {
         setNewHistory({ ...newHistory, [e.target.name]: e.target.value });
@@ -44,6 +34,7 @@ export default function EditHistory() {
 
     const handleChangeDoctor = (childDoctorId) => {
         setDoctorId(childDoctorId);
+        setNewHistory({ ...newHistory, userId: childDoctorId });
     };
 
     const handleSubmit = async (e) => {
@@ -58,11 +49,9 @@ export default function EditHistory() {
             epicrisis: newHistory.epicrisis,
             complaints: newHistory.complaints
         };
-        console.log(doctorId);
-        console.log(requestData);
 
-        const response = await HistoryEditRequest(historyId, requestData)
-        if (response === 204) {
+        const response = await HistoryEditRequest(historyId, requestData);
+        if (response.status === 204) {
             setNotification("История успешно отредактирована");
         } else {
             setNotification("Произошла ошибка при редактировании");
@@ -80,10 +69,9 @@ export default function EditHistory() {
                     <textarea name="diseaseAnamnesis" placeholder="Анамнез болезни" value={newHistory.diseaseAnamnesis} required onChange={handleChange}></textarea>
                     <textarea name="epicrisis" placeholder="Эпикриз" value={newHistory.epicrisis} required onChange={handleChange}></textarea>
                     <textarea name="complaints" placeholder="Жалобы" value={newHistory.complaints} required onChange={handleChange}></textarea>
-                    <DoctorSelect onChange={handleChangeDoctor} />
-                    <button type="submit">Добавить историю</button>
+                    <DoctorSelect onChange={handleChangeDoctor} selectedDoctorId={doctorId} />
+                    <button type="submit">Сохранить изменения</button>
                 </form>
-
                 <pre className="notification">{notification}</pre>
             </div>
         </>

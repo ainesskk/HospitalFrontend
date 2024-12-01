@@ -1,0 +1,11 @@
+.arrow-button{
+    position: absolute;
+    top:2vw;
+    left:2vw;
+    line-height: 1vw;
+    padding:0.5vw;
+}
+
+.arrow-button img {
+    transform: scale(-1, 1);
+}

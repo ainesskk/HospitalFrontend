@@ -1,5 +1,6 @@
 import React from "react";
 import {useNavigate} from "react-router-dom";
+import "./Arrow.css"
 
 export default function Arrow() {
     const navigate = useNavigate();
@@ -9,7 +10,6 @@ export default function Arrow() {
     }
     return (
         <>
-            <style>{` img { transform: scale(-1, 1); } `}</style>
             <button className="arrow-button" onClick={handleClick}>
                 <img src="/src/assets/arrow.png" alt="arrow" />
             </button>

@@ -1,7 +1,7 @@
 import {useState} from "react";
-import {HistoryAddRequest} from "../api/patiensApi.jsx";
+import {HistoryAddRequest} from "../../api/patiensApi.jsx";
 import {useParams} from "react-router-dom";
-import Arrow from "../Arrow.jsx";
+import Arrow from "../../Arrow/Arrow.jsx";
 
 export default function AddHistory() {
     const {id} = useParams();

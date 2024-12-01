@@ -1,9 +1,9 @@
 import { useParams, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { getPatientHistoryRequest, getPatientInfoRequest } from "../api/patiensApi.jsx";
-import HistorySearch from "../PatientPage/HistorySearch.jsx";
+import HistorySearch from "./History/HistorySearch.jsx";
 import "./Patient.css";
-import Arrow from "../Arrow.jsx";
+import Arrow from "../Arrow/Arrow.jsx";
 
 export default function Patient() {
     const { id } = useParams();

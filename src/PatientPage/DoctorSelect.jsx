@@ -1,8 +1,7 @@
-import {useEffect, useState} from "react";
-import {getDoctorInfoRequest} from "./api/userApi.jsx";
+import { useEffect, useState } from "react";
+import { getDoctorInfoRequest } from "../api/userApi.jsx";
 
-export default function DoctorSelect ({onChange}) {
-
+export default function DoctorSelect({ onChange, selectedDoctorId }) {
     const [doctors, setDoctors] = useState([]);
 
     const handleChange = (e) => {
@@ -13,21 +12,19 @@ export default function DoctorSelect ({onChange}) {
         const fetchDoctorInfo = async () => {
             const data = await getDoctorInfoRequest();
             setDoctors(data);
-        }
+        };
 
         fetchDoctorInfo();
     }, []);
 
     return (
         <>
-            <select className="doctor-select" onChange={handleChange}>
+            <select className="doctor-select" value={selectedDoctorId} onChange={handleChange}>
                 <option value="">Выберите врача</option>
-                {
-                    doctors.map(doctor => {
-                        return <option key={doctor.id} value={doctor.id}>{doctor.fio}</option>
-                    })
-                }
+                {doctors.map(doctor => (
+                    <option key={doctor.id} value={doctor.id}>{doctor.fio}</option>
+                ))}
             </select>
         </>
-    )
+    );
 }
