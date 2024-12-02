@@ -23,7 +23,21 @@ export async function getUserRole(){
             headers: { "Authorization": `Bearer ${getLsToken()}` }
         });
         console.log(role)
-        return role;
+        return role.data;
+    }catch(err){
+        console.log(err);
+        return err.status;
+    }
+}
+
+//Функция получения пользователей по ФИО
+export async function getUserInfoWithFio(searchString){
+    try{
+        const response = await axios.get(`${basicUrl}/User/Fio/${searchString}`, {
+            headers: { "Authorization": `Bearer ${getLsToken()}` }
+        });
+        console.log(response.data)
+        return response;
     }catch(err){
         console.log(err);
         return err.status;

@@ -9,11 +9,12 @@ import EditHistory from "./PatientPage/History/EditHistory.jsx";
 import AddExamination from "./PatientPage/Examination/AddExamination.jsx";
 import EditExamination from "./PatientPage/Examination/EditExamination.jsx";
 import ExaminationPage from "./PatientPage/Examination/ExaminationPage.jsx";
-import {AppProvider} from "./contexts/AppContext.jsx";
+import { AppProvider} from "./contexts/AppContext.jsx";
 import PrivateRoute from "./PrivateRoute.jsx";
 import BlockRoute from "./BlockRoute.jsx";
 
 function App() {
+
 
   return (
     <>

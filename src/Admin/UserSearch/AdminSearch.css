@@ -1,0 +1,49 @@
+.search-user-form {
+    width: 70%;
+    margin: 0 auto;
+    padding-top: 2vw;
+    display: flex;
+    align-items: stretch;
+    height: 4vw;
+}
+
+.search-user-form input {
+    margin: 0;
+    width: 90%;
+    height: 100%;
+    border: 2px solid #0097B3;
+    border-right: none;
+    border-bottom-right-radius: 0;
+    border-top-right-radius: 0;
+    box-sizing: border-box;
+}
+
+.search-user-form button {
+    width: 10%;
+    height: 100%;
+    border-left: none;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    box-sizing: border-box;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.search-img-container img {
+    height: 2vw;
+}
+
+.search-all-patients-container {
+    width: 100%;
+    margin: 3vw 0;
+}
+
+.no-results{
+    font-size: 1.5vw;
+    padding-top: 3vw;
+    padding-bottom: 3vw;
+}
+

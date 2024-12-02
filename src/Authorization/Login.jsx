@@ -3,6 +3,7 @@ import "./Authorization.css";
 import { useState, useContext } from "react";
 import { loginRequest } from "../api/authorizationApi.jsx";
 import { AppContext } from "../contexts/AppContext.jsx";
+import { getUserRole } from "../api/userApi.jsx";
 
 export default function Login() {
     const navigate = useNavigate();
@@ -24,6 +25,8 @@ export default function Login() {
 
         const status = await loginRequest(requestData);
         if (status === 200) {
+            const role = await getUserRole();
+            sessionStorage.setItem('role', role);
             setIsRoleSet(true);
             navigate("/");
         } else {

@@ -7,3 +7,15 @@ export function setLsToken(token){
 export function getLsToken(){
     return sessionStorage.getItem('token');
 }
+
+//Функция сохранения роли пользователя.
+export function setLsRole(role){
+    sessionStorage.setItem('role', role);
+}
+
+//Функция получения роли пользователя.
+export async function getLsRole(){
+    const role= sessionStorage.getItem('role');
+    console.log(role);
+    return role;
+}
