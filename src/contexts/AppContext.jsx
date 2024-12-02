@@ -9,6 +9,7 @@ export const AppProvider = ({ children }) => {
     const [role, setRole] = useState("");
     const [isRoleSet, setIsRoleSet] = useState(false);
 
+
     useEffect(() => {
         if (isRoleSet) {
             const fetchUserRole = async () => {

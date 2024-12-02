@@ -1,38 +1,45 @@
 import "../../Search/Searchbar.css";
-import {useEffect, useState} from "react";
-import {deleteUser, getUserInfoWithFio} from "../../api/userApi.jsx";
+import { useEffect, useState } from "react";
+import { getUserInfoWithFio } from "../../api/userApi.jsx";
 import SearchUser from "./SearchUser.jsx";
-import "./AdminSearch.css"
-import UserPage from "./UserPage.jsx";
+import "./AdminSearch.css";
 
 export default function AdminSearch() {
-    const [searchString, setSearchString] = useState("");
+    // Считывание сохраненного состояния из sessionStorage
+    const [searchString, setSearchString] = useState(() => sessionStorage.getItem("searchString") || "");
     const [users, setUsers] = useState([]);
-    const [noUsers, setNoUsers] = useState(true);
+    const [noUsers, setNoUsers] = useState(false);
+
+    useEffect(() => {
+        sessionStorage.setItem("searchString", searchString);
+        userSearch();
+    }, [users]);
 
     const handleChange = (e) => {
         setSearchString(e.target.value);
     };
 
-    async function handleDeleteUser(id){
-        const status = await deleteUser(id);
-        setIsUserDelete(true);
-    }
-
     const buttonClick = async (e) => {
         e.preventDefault();
         setNoUsers(true);
+        userSearch();
+    };
+
+    async function userSearch(){
         const response = await getUserInfoWithFio(searchString);
         if (response.data !== undefined) {
-            if(response.data.length !== 0){
+            if (response.data.length !== 0) {
                 setNoUsers(false);
                 setUsers(response.data);
+            } else {
+                setNoUsers(true);
+                setUsers([]);
             }
         } else {
             setNoUsers(true);
             setUsers([]);
         }
-    };
+    }
 
     return (
         <>
@@ -41,6 +48,7 @@ export default function AdminSearch() {
                     className="search-input"
                     type="text"
                     placeholder="Поиск пользователей"
+                    value={searchString}
                     onChange={handleChange}
                 />
                 <button className="search-img-container" onClick={buttonClick}>
@@ -50,13 +58,12 @@ export default function AdminSearch() {
             {noUsers ? (
                 <p className="no-results">Нет результатов</p>
             ) : (
-                    <div className="search-all-users-container">
-                        {users.map((user) => (
-                            <SearchUser key={user.id} userData={user} />
-                        ))}
-                    </div>
-                )
-            }
+                <div className="search-all-users-container">
+                    {users.map((user) => (
+                        <SearchUser key={user.id} userData={user} />
+                    ))}
+                </div>
+            )}
         </>
     );
 }
