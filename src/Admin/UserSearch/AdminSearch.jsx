@@ -1,7 +1,9 @@
 import "../../Search/Searchbar.css";
-import { useState } from "react";
-import {getUserInfoWithFio} from "../../api/userApi.jsx";
+import {useEffect, useState} from "react";
+import {deleteUser, getUserInfoWithFio} from "../../api/userApi.jsx";
 import SearchUser from "./SearchUser.jsx";
+import "./AdminSearch.css"
+import UserPage from "./UserPage.jsx";
 
 export default function AdminSearch() {
     const [searchString, setSearchString] = useState("");
@@ -12,8 +14,14 @@ export default function AdminSearch() {
         setSearchString(e.target.value);
     };
 
+    async function handleDeleteUser(id){
+        const status = await deleteUser(id);
+        setIsUserDelete(true);
+    }
+
     const buttonClick = async (e) => {
         e.preventDefault();
+        setNoUsers(true);
         const response = await getUserInfoWithFio(searchString);
         if (response.data !== undefined) {
             if(response.data.length !== 0){
@@ -32,7 +40,7 @@ export default function AdminSearch() {
                 <input
                     className="search-input"
                     type="text"
-                    placeholder="Поиск пользователя"
+                    placeholder="Поиск пользователей"
                     onChange={handleChange}
                 />
                 <button className="search-img-container" onClick={buttonClick}>
@@ -42,13 +50,13 @@ export default function AdminSearch() {
             {noUsers ? (
                 <p className="no-results">Нет результатов</p>
             ) : (
-                <div className="search-all-patients-container">
-                    {users.map((user) => {
-                        console.log(user.id);
-                        return <SearchUser key={user.id} userData={user} />;
-                    })}
-                </div>
-            )}
+                    <div className="search-all-users-container">
+                        {users.map((user) => (
+                            <SearchUser key={user.id} userData={user} />
+                        ))}
+                    </div>
+                )
+            }
         </>
     );
 }

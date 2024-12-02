@@ -1,0 +1,35 @@
+.search-user-info-container {
+    width: 80%;
+    margin: 1vw auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    border: 2px solid #cacaca;
+    background: #ffffff;
+    border-radius: 15px;
+    padding: 1vw 0 1vw 0;
+    transition: background ease-in 0.2s;
+}
+
+.search-user-info-container:hover{
+    background: #f3f3f3;
+
+    transition: background ease-in 0.2s;
+}
+
+.search-role-fio{
+    width: 30%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    padding: 0 1vw;
+}
+
+.search-user-fio-container{
+    width: 70%;
+    border-right:  2px solid #cacaca;
+}
+
+.search-user-fio{
+    padding: 0 1vw;
+}

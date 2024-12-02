@@ -1,7 +1,7 @@
 import "./Searchbar.css";
 import SearchPatient from "./SearchPatient.jsx";
 import { searchPatientsRequest } from "../api/patiensApi.jsx";
-import { useState } from "react";
+import {useEffect, useState} from "react";
 
 export default function Searchbar() {
     const [searchString, setSearchString] = useState("");
@@ -14,6 +14,7 @@ export default function Searchbar() {
 
     const buttonClick = async (e) => {
         e.preventDefault();
+        setNoPatients(true);
         const response = await searchPatientsRequest(searchString);
         if (response.data !== undefined) {
             if(response.data.length !== 0){

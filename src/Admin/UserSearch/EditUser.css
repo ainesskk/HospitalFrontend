@@ -1,0 +1,42 @@
+.edit-user-container{
+    padding: 0;
+}
+
+.edit-user-form-container{
+    width: 40%;
+    margin: 0 auto;
+    padding-top: 1.8vw;
+}
+
+.edit-user-form-container .edit-user-form{
+    display: flex;
+    flex-direction: column;
+}
+
+.edit-user-form select{
+    border-radius: 10px;
+    font-size: 1.2vw;
+    padding: 0.5vw;
+}
+
+.edit-user-form input,
+.edit-user-form textarea,
+.edit-user-form button,
+.edit-user-form select{
+    font-family: Arial, sans-serif;
+    margin: 0.5vw 0;
+    resize: none;
+}
+
+.notification{
+    margin: 1vw;
+    font-size: 1.2vw;
+}
+
+.success{
+    color: green;
+}
+.error{
+    color: red;
+}
+

@@ -1,5 +1,5 @@
 import './App.css'
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 import Login from "./Authorization/Login.jsx";
 import Search from "./Search/Search.jsx";
 import Patient from "./PatientPage/Patient.jsx";
@@ -12,6 +12,8 @@ import ExaminationPage from "./PatientPage/Examination/ExaminationPage.jsx";
 import { AppProvider} from "./contexts/AppContext.jsx";
 import PrivateRoute from "./PrivateRoute.jsx";
 import BlockRoute from "./BlockRoute.jsx";
+import UserPage from "./Admin/UserSearch/UserPage.jsx";
+import EditUser from "./Admin/UserSearch/EditUser.jsx";
 
 function App() {
 
@@ -63,6 +65,16 @@ function App() {
                     <Route path="/patient/:patientId/examination/:examinationId" element={
                         <PrivateRoute>
                             <ExaminationPage />
+                        </PrivateRoute>
+                    } />
+                    <Route path="/user/:userId" element={
+                        <PrivateRoute>
+                            <UserPage />
+                        </PrivateRoute>
+                    } />
+                    <Route path="/user/:userId/edituser" element={
+                        <PrivateRoute>
+                            <EditUser />
                         </PrivateRoute>
                     } />
                 </Routes>

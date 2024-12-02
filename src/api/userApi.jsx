@@ -43,3 +43,45 @@ export async function getUserInfoWithFio(searchString){
         return err.status;
     }
 }
+
+//Функция получения пользователей по ФИО
+export async function getUserInfoRequest(userId){
+    try{
+        const response = await axios.get(`${basicUrl}/User/Id/${userId}`, {
+            headers: { "Authorization": `Bearer ${getLsToken()}` }
+        });
+        console.log(response.data)
+        return response.data;
+    }catch(err){
+        console.log(err);
+        return err.status;
+    }
+}
+
+//Функция для отправки запроса удаления пользователя
+export async function deleteUser(userId){
+    try{
+        const response = await axios.delete(`${basicUrl}/User/${userId}`,{
+            headers: { "Authorization": `Bearer ${getLsToken()}` }
+        });
+        console.log(response)
+        return response.status;
+    }catch(err){
+        console.log(err);
+        return err.status;
+    }
+}
+
+//Функция отправки запроса для получения информации о пользователе по id.
+export async function editUserRequest(userId, requestData) {
+    try{
+        const response = await axios.put(`${basicUrl}/User/Id/${userId}`, requestData, {
+            headers: { "Authorization": `Bearer ${getLsToken()}` }
+        });
+        console.log(response.status)
+        return response.status;
+    }catch(err){
+        console.log(err);
+        return err.status;
+    }
+}

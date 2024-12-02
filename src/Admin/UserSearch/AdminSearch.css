@@ -31,19 +31,39 @@
     align-items: center;
 }
 
-
 .search-img-container img {
     height: 2vw;
 }
 
-.search-all-patients-container {
-    width: 100%;
-    margin: 3vw 0;
+.search-all-users-container {
+    width: 80%;
+    margin: 3vw auto;
 }
 
 .no-results{
     font-size: 1.5vw;
     padding-top: 3vw;
     padding-bottom: 3vw;
+}
+
+.user-container{
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    padding: 2vw 0 2vw 2vw;
+    margin: 2vw 0;
+    border-radius: 15px;
+    box-shadow: 3px 3px 15px 3px rgba(0, 0, 0, 0.39);
+    width: 98%;
+    text-align: left;
+}
+
+.user-buttons {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.user-buttons button {
+    margin-right: 2vw;
 }
 
