@@ -59,7 +59,7 @@ export async function getHistoryInfoRequest(historyId) {
 }
 
 //Функция отправки запроса для создания истории болезни пациента.
-export async function HistoryAddRequest(patientId, requestData) {
+export async function historyAddRequest(patientId, requestData) {
     try{
         const response = await axios.post(`${basicUrl}/Patient/${patientId}/History`, requestData, {
             headers: { "Authorization": `Bearer ${getLsToken()}` }
@@ -73,7 +73,7 @@ export async function HistoryAddRequest(patientId, requestData) {
 }
 
 //Функция отправки запроса для изменения истории болезни пациента.
-export async function HistoryEditRequest(historyId, requestData) {
+export async function historyEditRequest(historyId, requestData) {
     try{
         console.log(historyId);
         console.log(requestData);

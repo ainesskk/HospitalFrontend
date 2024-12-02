@@ -8,6 +8,7 @@ import {
 import Arrow from "../../Arrow/Arrow.jsx";
 import ExaminationsList from "../Examination/ExaminationList.jsx";
 import AppointmentsList from "../Appointment/AppointmenstList.jsx";
+import "./HistoryPage.css"
 
 export default function HistoryPage() {
     const navigate = useNavigate();
@@ -65,34 +66,43 @@ export default function HistoryPage() {
 
     return (
         <>
-            <Arrow/>
             <div className="history-page-container">
-                <p><b>ФИО пациента: </b>{historyInfo.patientFio}</p>
-                <p><b>ФИО врача: </b>{historyInfo.doctorFio}</p>
-                <p><b>Диагноз: </b>{historyInfo.diagnosis}</p>
-                <p><b>Жалобы: </b>{historyInfo.complaints}</p>
-                <p><b>Дата прибытия: </b>{historyInfo.arriveDate}</p>
-                <p><b>Дата выписки: </b>{historyInfo.departureDate}</p>
-                <p><b>Анамнез жизни: </b>{historyInfo.lifeAnamnesis}</p>
-                <p><b>Анамнез болезни: </b>{historyInfo.diseaseAnamnesis}</p>
-                <p><b>Эпикриз: </b>{historyInfo.epicrisis}</p>
-                <button className="edit-history" onClick={handleEditHistory}>Редактировать историю</button>
-            </div>
-            <div className="examinations-container">
-                <p>Осмотры</p>
-                <button className="add-examination" onClick={handleAddExamination}>Добавить осмотр</button>
-                <ExaminationsList
-                    examinations={examinations}
-                    noExaminations={noExaminations}
-                    patientId={patientId}
-                />
-            </div>
-            <div className="appointment-container">
-                <p>Назначения</p>
-                <AppointmentsList
-                    appointments={appointments}
-                    noAppointments={noAppointments}
-                />
+                <Arrow/>
+                <div className="history-info-container">
+                    <p><b>ФИО пациента: </b>{historyInfo.patientFio}</p>
+                    <p><b>ФИО врача: </b>{historyInfo.doctorFio}</p>
+                    <p><b>Диагноз: </b>{historyInfo.diagnosis}</p>
+                    <p><b>Жалобы: </b>{historyInfo.complaints}</p>
+                    <p><b>Дата прибытия: </b>{historyInfo.arriveDate}</p>
+                    <p><b>Дата выписки: </b>{historyInfo.departureDate}</p>
+                    <p><b>Анамнез жизни: </b>{historyInfo.lifeAnamnesis}</p>
+                    <p><b>Анамнез болезни: </b>{historyInfo.diseaseAnamnesis}</p>
+                    <p><b>Эпикриз: </b>{historyInfo.epicrisis}</p>
+                    <div className="edit-history-button">
+                        <button className="edit-history" onClick={handleEditHistory}>Редактировать историю</button>
+                    </div>
+                </div>
+                <div className="examinations-container">
+                    <div className="examination-container-info">
+                        <h2>Осмотры</h2>
+                        <button className="add-examination" onClick={handleAddExamination}>Добавить осмотр</button>
+                    </div>
+
+                    <ExaminationsList
+                        examinations={examinations}
+                        noExaminations={noExaminations}
+                        patientId={patientId}
+                    />
+                </div>
+                <div className="appointment-container">
+                    <div className="appointment-container-info">
+                        <h2>Назначения</h2>
+                    </div>
+                    <AppointmentsList
+                        appointments={appointments}
+                        noAppointments={noAppointments}
+                    />
+                </div>
             </div>
         </>
     );

@@ -1,0 +1,21 @@
+.examination-page-container{
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    padding: 2vw;
+    border-radius: 15px;
+    box-shadow: 3px 3px 15px 3px rgba(0, 0, 0, 0.39);
+    width: 80%;
+    margin: 2vw auto;
+    text-align: left;
+    line-height: 2vw;
+}
+
+.examination-page-buttons{
+    display: flex;
+    justify-content: flex-end;
+}
+
+.examination-page-buttons button{
+    margin-left: 2vw;
+}

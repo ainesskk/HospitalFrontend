@@ -1,0 +1,39 @@
+.all-examinations-container{
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+}
+
+.all-examinations-container p {
+    line-height: 2vw;
+    text-align: left;
+}
+
+.examination-container{
+    background-color: white;
+    padding: 2vw;
+    border-radius: 15px;
+    box-shadow: 3px 3px 15px 3px rgba(0, 0, 0, 0.39);
+    width: 95%;
+    margin: 1vw auto;
+}
+
+.open-examination-button{
+    display: flex;
+    justify-content: flex-end;
+}
+
+.open-examination-button button{
+    margin: 1vw 0 0 0;
+    padding: 1vw;
+}
+
+.open-examination-button button p{
+    line-height: 2vw;
+}
+
+.no-results-examination{
+    font-size: 1.5vw;
+    padding-top: 1vw;
+    padding-bottom: 1vw;
+}

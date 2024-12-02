@@ -1,0 +1,21 @@
+.history-search-container{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: auto;
+    background-color: white;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    margin-bottom: 1vw;
+}
+
+.history-search-container:hover{
+    background-color: #f8f8f8;
+}
+
+.history-diagnosis{
+    color: black;
+}
+
+.history-diagnosis:hover{
+    cursor: pointer;
+}

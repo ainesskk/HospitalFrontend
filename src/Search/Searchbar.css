@@ -1,6 +1,7 @@
 .search-form {
     width: 70%;
     margin: 0 auto;
+    padding-top: 2vw;
     display: flex;
     align-items: stretch;
     height: 4vw;
@@ -39,3 +40,10 @@
     width: 100%;
     margin: 3vw 0;
 }
+
+.no-results{
+    font-size: 1.5vw;
+    padding-top: 3vw;
+    padding-bottom: 3vw;
+}
+

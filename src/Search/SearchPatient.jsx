@@ -1,5 +1,6 @@
 import "./SearchPatient.css";
 import { useNavigate } from "react-router-dom";
+import PropTypes from "prop-types";
 
 export default function SearchPatient({ userData }) {
     const navigate = useNavigate();
@@ -19,4 +20,15 @@ export default function SearchPatient({ userData }) {
             </div>
         </>
     );
+}
+
+SearchPatient.propTypes = {
+    userData: PropTypes.arrayOf(
+        PropTypes.shape({
+            id: PropTypes.string.isRequired,
+            fio: PropTypes.string.isRequired,
+            birthDate: PropTypes.string.isRequired,
+            passport: PropTypes.string.isRequired
+        })
+    ).isRequired
 }

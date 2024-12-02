@@ -1,0 +1,35 @@
+.all-appointments-container{
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    padding: 2vw;
+    border-radius: 15px;
+    box-shadow: 3px 3px 15px 3px rgba(0, 0, 0, 0.39);
+    width: 95%;
+    text-align: left;
+}
+
+.all-appointments-container p {
+    line-height: 2vw;
+    text-align: left;
+}
+
+.open-appointment-button{
+    display: flex;
+    justify-content: flex-end;
+}
+
+.open-appointment-button button{
+    margin: 1vw 0 0 0;
+    padding: 1vw;
+}
+
+.open-appointment-button button p{
+    line-height: 2vw;
+}
+
+.no-results-appointment{
+    font-size: 1.5vw;
+    padding-top: 1vw;
+    padding-bottom: 1vw;
+}

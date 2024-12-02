@@ -1,0 +1,15 @@
+.doctor-select-container {
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+}
+
+.doctor-select {
+    border-radius: 10px;
+    font-size: 1.2vw;
+    padding: 0.5vw;
+}
+
+.doctor-select option {
+    font-size: 1.2vw;
+}

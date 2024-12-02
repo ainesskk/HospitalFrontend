@@ -6,6 +6,7 @@ import {
     examinationEditRequest,
     getExaminationInfoRequest,
 } from "../../api/patiensApi.jsx";
+import "./EditExamination.css"
 
 export default function EditExamination() {
     const { examinationId } = useParams();
@@ -16,6 +17,7 @@ export default function EditExamination() {
     });
     const [doctorId, setDoctorId] = useState("");
     const [notification, setNotification] = useState(" ");
+    const [notificationType, setNotificationType] = useState("");
 
     useEffect(() => {
         const fetchExaminationInfo = async () => {
@@ -48,8 +50,10 @@ export default function EditExamination() {
         const status = await examinationEditRequest(examinationId, requestData);
         if (status === 204) {
             setNotification("Назначение успешно отредактировано");
+            setNotificationType("success");
         } else {
             setNotification("Произошла ошибка при редактировании");
+            setNotificationType("error");
         }
     };
 
@@ -57,13 +61,18 @@ export default function EditExamination() {
         <>
             <div className="edit-examination-container">
                 <Arrow />
-                <form className="edit-examination-form" onSubmit={handleSubmit}>
-                    <input type="date" name="date" placeholder="Дата осмотра" value={newExamination.date} required onChange={handleChange} />
-                    <textarea name="conclusion" placeholder="Заключение" value={newExamination.conclusion} required onChange={handleChange} />
-                    <DoctorSelect onChange={handleChangeDoctor} selectedDoctorId={doctorId} />
-                    <button type="submit">Сохранить изменения</button>
-                </form>
-                <pre className="notification">{notification}</pre>
+                <div className="edit-examination-form-container">
+                    <form className="edit-examination-form" onSubmit={handleSubmit}>
+                        <input type="date" name="date" placeholder="Дата осмотра" value={newExamination.date} required
+                               onChange={handleChange}/>
+                        <textarea name="conclusion" placeholder="Заключение" value={newExamination.conclusion} required
+                                  onChange={handleChange}/>
+                        <DoctorSelect onChange={handleChangeDoctor} selectedDoctorId={doctorId}/>
+                        <button type="submit">Сохранить изменения</button>
+                    </form>
+                </div>
+
+                <pre className={`notification ${notificationType}`}>{notification}</pre>
             </div>
         </>
     );

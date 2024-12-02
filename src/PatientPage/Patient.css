@@ -1,0 +1,62 @@
+.patient-page-container {
+    width: 80%;
+    margin: 0 auto;
+    padding: 2vw 0 0 0;
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+}
+
+.patient-page-container h1 {
+    font-size: 1.6vw;
+    margin-top: 0.6vw;
+    margin-bottom: 2vw;
+    text-align: left;
+}
+
+.patient-info-container {
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    padding: 2vw;
+    border-radius: 15px;
+    box-shadow: 3px 3px 15px 3px rgba(0, 0, 0, 0.39);
+    width: 90%;
+    text-align: left;
+}
+
+.patient-info-container p {
+    line-height: 2vw;
+    text-align: left;
+}
+
+.patient-histories-container {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    margin: 1vw 0;
+    width: 100%;
+}
+
+.patient-histories-container h2 {
+    color: #000000;
+    font-size: 1.5vw;
+    margin-top: 1vw;
+}
+
+.patient-histories-container button {
+    height: 2.5vw;
+    padding: 0 1vw;
+    margin-left: 2vw;
+}
+
+.patient-histories-container button p {
+    margin: 0;
+    padding: 0;
+}
+
+.history-container {
+    display: inline-block;
+    width: auto;
+    margin-bottom: 1vw;
+}

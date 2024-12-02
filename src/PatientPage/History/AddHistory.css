@@ -1,0 +1,35 @@
+.add-history-container{
+    padding: 0;
+}
+
+.add-history-form-container{
+    width: 40%;
+    margin: 0 auto;
+    padding-top: 1.8vw;
+}
+
+.add-history-form-container .add-history-form{
+    display: flex;
+    flex-direction: column;
+}
+
+.add-history-form input,
+.add-history-form textarea,
+.add-history-form button{
+    font-family: Arial, sans-serif;
+    margin: 0.5vw 0;
+    resize: none;
+}
+
+.notification{
+    margin: 1vw;
+    font-size: 1.2vw;
+}
+
+.success{
+    color: green;
+}
+.error{
+    color: red;
+}
+

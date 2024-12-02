@@ -9,7 +9,7 @@ export default function Patient() {
     const { id } = useParams();
     const [patientInfo, setPatientInfo] = useState({});
     const [history, setHistory] = useState([]);
-    const [noHistories, setNoHistories] = useState(true);
+    const [noHistories, setNoHistories] = useState(false);
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -41,7 +41,8 @@ export default function Patient() {
     return (
         <>
             <div className="patient-page-container">
-                <Arrow />
+                <Arrow/>
+                <h1>Карточка пациента</h1>
                 <div className="patient-info-container">
                     <p><b>ФИО: </b>{patientInfo.fio}</p>
                     <p><b>Телефон: </b>{patientInfo.telephone}</p>
@@ -58,7 +59,7 @@ export default function Patient() {
                 ) : (
                     <div className="history-container">
                         {history.map((historyItem) => (
-                            <HistorySearch key={historyItem.id} userId={id} history={historyItem} />
+                            <HistorySearch key={historyItem.id} userId={id} history={historyItem}/>
                         ))}
                     </div>
                 )}

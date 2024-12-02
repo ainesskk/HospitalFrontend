@@ -1,0 +1,63 @@
+.history-page-container{
+    width: 80%;
+    margin: 0 auto;
+    padding: 2vw 0 0 0;
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+}
+
+.history-info-container{
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    padding: 2vw;
+    border-radius: 15px;
+    box-shadow: 3px 3px 15px 3px rgba(0, 0, 0, 0.39);
+    width: 95%;
+    text-align: left;
+}
+
+.history-info-container p {
+    line-height: 2vw;
+    text-align: left;
+}
+
+.edit-history-button{
+    display: flex;
+    justify-content: flex-end;
+}
+
+.edit-history-button button{
+    margin-top: 1vw;
+}
+
+.examination-container-info{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin: 2vw 0;
+}
+
+.examinations-container h2 {
+    color: #000000;
+    font-size: 1.7vw;
+    margin: 0;
+}
+
+.examinations-container button {
+    margin-left: 2vw;
+}
+
+.appointment-container-info{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin: 2vw 0;
+}
+
+.appointment-container h2 {
+    color: #000000;
+    font-size: 1.7vw;
+    margin: 0;
+}

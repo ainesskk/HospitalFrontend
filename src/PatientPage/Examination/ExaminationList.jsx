@@ -1,6 +1,7 @@
 import PropTypes from "prop-types";
 import Examination from "./Examination.jsx";
 import { useNavigate } from "react-router-dom";
+import "./ExaminationList.css"
 
 export default function ExaminationsList({ examinations, noExaminations, patientId }) {
     const navigate = useNavigate();
@@ -12,13 +13,15 @@ export default function ExaminationsList({ examinations, noExaminations, patient
     return (
         <>
             {noExaminations ? (
-                <p className="no-results">Нет результатов</p>
+                <p className="no-results-examination">Нет результатов</p>
             ) : (
                 <div className="all-examinations-container">
                     {examinations.map(examination => (
                         <div key={examination.id} className="examination-container">
                             <Examination examination={examination} />
-                            <button onClick={() => showExamination(examination)}>Открыть</button>
+                            <div className="open-examination-button">
+                                <button onClick={() => showExamination(examination)}>Открыть</button>
+                            </div>
                         </div>
                     ))}
                 </div>
