@@ -15,3 +15,17 @@ export async function getDoctorInfoRequest() {
         return err.status;
     }
 }
+
+//Функция получения роли авторизованного пользователя
+export async function getUserRole(){
+    try{
+        const role = await axios.get(`${basicUrl}/User/Role`, {
+            headers: { "Authorization": `Bearer ${getLsToken()}` }
+        });
+        console.log(role)
+        return role;
+    }catch(err){
+        console.log(err);
+        return err.status;
+    }
+}

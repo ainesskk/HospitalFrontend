@@ -1,5 +1,5 @@
 import './App.css'
-import {Routes, Route} from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Login from "./Authorization/Login.jsx";
 import Search from "./Search/Search.jsx";
 import Patient from "./PatientPage/Patient.jsx";
@@ -9,22 +9,63 @@ import EditHistory from "./PatientPage/History/EditHistory.jsx";
 import AddExamination from "./PatientPage/Examination/AddExamination.jsx";
 import EditExamination from "./PatientPage/Examination/EditExamination.jsx";
 import ExaminationPage from "./PatientPage/Examination/ExaminationPage.jsx";
+import {AppProvider} from "./contexts/AppContext.jsx";
+import PrivateRoute from "./PrivateRoute.jsx";
+import BlockRoute from "./BlockRoute.jsx";
 
 function App() {
 
   return (
     <>
-        <Routes>
-            <Route path="/" element={<Login />} />
-            <Route path="/search" element={<Search />} />
-            <Route path="/patient/:id" element={<Patient />} />
-            <Route path="/patient/:patientId/history/:historyId" element={<HistoryPage />} />
-            <Route path="/patient/:id/addhistory" element={<AddHistory />} />
-            <Route path="/patient/:patientId/edithistory/:historyId" element={<EditHistory />} />
-            <Route path="/patient/:patientId/history/:historyId/addexamination" element={<AddExamination />} />
-            <Route path="/patient/:patientId/editexamination/:examinationId" element={<EditExamination />} />
-            <Route path="/patient/:patientId/examination/:examinationId" element={<ExaminationPage />} />
-        </Routes>
+        <AppProvider>
+                <Routes>
+                    <Route path="/login" element={
+                        <BlockRoute>
+                            <Login />
+                        </BlockRoute>
+                    } />
+                    <Route path="/" element={
+                        <PrivateRoute>
+                            <Search />
+                        </PrivateRoute>
+                    } />
+                    <Route path="/patient/:id" element={
+                        <PrivateRoute>
+                            <Patient />
+                        </PrivateRoute>
+                    } />
+                    <Route path="/patient/:patientId/history/:historyId" element={
+                        <PrivateRoute>
+                            <HistoryPage />
+                        </PrivateRoute>
+                    } />
+                    <Route path="/patient/:id/addhistory" element={
+                        <PrivateRoute>
+                            <AddHistory />
+                        </PrivateRoute>
+                    } />
+                    <Route path="/patient/:patientId/edithistory/:historyId" element={
+                        <PrivateRoute>
+                            <EditHistory />
+                        </PrivateRoute>
+                    } />
+                    <Route path="/patient/:patientId/history/:historyId/addexamination" element={
+                        <PrivateRoute>
+                            <AddExamination />
+                        </PrivateRoute>
+                    } />
+                    <Route path="/patient/:patientId/editexamination/:examinationId" element={
+                        <PrivateRoute>
+                            <EditExamination />
+                        </PrivateRoute>
+                    } />
+                    <Route path="/patient/:patientId/examination/:examinationId" element={
+                        <PrivateRoute>
+                            <ExaminationPage />
+                        </PrivateRoute>
+                    } />
+                </Routes>
+        </AppProvider>
     </>
   )
 }

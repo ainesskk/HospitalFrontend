@@ -11,7 +11,7 @@ export default function AppointmentsList({ appointments, noAppointments }) {
             ) : (
                 <div className="all-appointments-container">
                     {appointments.map(appointment => (
-                        <div className="appointment-container" key={appointment.id}>
+                        <div className="appointments-container" key={appointment.id}>
                             <Appointment appointment={appointment} />
                         </div>
                     ))}
@@ -22,15 +22,16 @@ export default function AppointmentsList({ appointments, noAppointments }) {
 }
 
 AppointmentsList.propTypes = {
-    appointments: PropTypes.arrayOf(
-        PropTypes.shape({
-            patientFio: PropTypes.string.isRequired,
-            content: PropTypes.string.isRequired,
-            date: PropTypes.string.isRequired,
-            doctorFio: PropTypes.string.isRequired,
-            isMarked: PropTypes.bool.isRequired,
-            fioMarkedBy: PropTypes.string.isRequired
-        })
-    ).isRequired,
+        appointments: PropTypes.arrayOf(
+            PropTypes.shape({
+                patientFio: PropTypes.string.isRequired,
+                content: PropTypes.string.isRequired,
+                date: PropTypes.string.isRequired,
+                doctorFio: PropTypes.string.isRequired,
+                isMarked: PropTypes.bool,
+                markDate: PropTypes.string,
+                fioMarkedBy: PropTypes.string
+            })
+        ).isRequired,
     noAppointments: PropTypes.bool.isRequired
 };

@@ -43,15 +43,15 @@ export default function ExaminationPage() {
                     <button onClick={() => handleEditExamination(examination.id)}>Редактировать</button>
                 </div>
             </div>
-            <div className="appointment-container">
-                <p>Назначения</p>
-                <button className="add-appointment" onClick={handleAddAppointment}>Добавить осмотр</button>
-                <AppointmentsList
-                    appointments={examinations}
-                    noAppointments={noExaminations}
-                    patientId={patientId}
-                />
-            </div>
+            {/*<div className="appointment-container">*/}
+            {/*    <p>Назначения</p>*/}
+            {/*    <button className="add-appointment" onClick={handleAddAppointment}>Добавить осмотр</button>*/}
+            {/*    <AppointmentsList*/}
+            {/*        appointments={examinations}*/}
+            {/*        noAppointments={noExaminations}*/}
+            {/*        patientId={patientId}*/}
+            {/*    />*/}
+            {/*</div>*/}
         </>
     );
 }
