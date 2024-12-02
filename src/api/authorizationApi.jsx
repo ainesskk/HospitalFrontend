@@ -7,7 +7,6 @@ export async function loginRequest(requestData) {
     try{
         const response = await axios.post(`${basicUrl}/Account/auth-token`, requestData)
         setLsToken(response.data);
-        console.log(response)
         return response.status;
     }catch(err){
         console.log(err);

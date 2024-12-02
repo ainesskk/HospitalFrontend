@@ -16,6 +16,5 @@ export function setLsRole(role){
 //Функция получения роли пользователя.
 export async function getLsRole(){
     const role= sessionStorage.getItem('role');
-    console.log(role);
     return role;
 }

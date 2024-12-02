@@ -18,7 +18,6 @@ export default function EditUser() {
     useEffect(() => {
         const fetchUserInfo = async () => {
             const data = await getUserInfoRequest(userId);
-            console.log("user ", data);
             setNewUser(data);
         };
 
@@ -39,8 +38,6 @@ export default function EditUser() {
             password: newUser.password,
             role: parseInt(newUser.role)
         };
-
-        console.log(requestData);
 
         const status = await editUserRequest(userId, requestData);
         if (status === 204) {

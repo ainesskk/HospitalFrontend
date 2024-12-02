@@ -8,7 +8,6 @@ export async function getDoctorInfoRequest() {
         const response = await axios.get(`${basicUrl}/User/Doctor`, {
             headers: { "Authorization": `Bearer ${getLsToken()}` }
         });
-        console.log(response)
         return response.data;
     }catch(err){
         console.log(err);
@@ -22,7 +21,6 @@ export async function getUserRole(){
         const role = await axios.get(`${basicUrl}/User/Role`, {
             headers: { "Authorization": `Bearer ${getLsToken()}` }
         });
-        console.log(role)
         return role.data;
     }catch(err){
         console.log(err);
@@ -36,7 +34,6 @@ export async function getUserInfoWithFio(searchString){
         const response = await axios.get(`${basicUrl}/User/Fio/${searchString}`, {
             headers: { "Authorization": `Bearer ${getLsToken()}` }
         });
-        console.log(response.data)
         return response;
     }catch(err){
         console.log(err);
@@ -50,7 +47,6 @@ export async function getUserInfoRequest(userId){
         const response = await axios.get(`${basicUrl}/User/Id/${userId}`, {
             headers: { "Authorization": `Bearer ${getLsToken()}` }
         });
-        console.log(response.data)
         return response.data;
     }catch(err){
         console.log(err);
@@ -64,7 +60,6 @@ export async function deleteUser(userId){
         const response = await axios.delete(`${basicUrl}/User/${userId}`,{
             headers: { "Authorization": `Bearer ${getLsToken()}` }
         });
-        console.log(response)
         return response.status;
     }catch(err){
         console.log(err);
@@ -78,7 +73,6 @@ export async function editUserRequest(userId, requestData) {
         const response = await axios.put(`${basicUrl}/User/Id/${userId}`, requestData, {
             headers: { "Authorization": `Bearer ${getLsToken()}` }
         });
-        console.log(response.status)
         return response.status;
     }catch(err){
         console.log(err);

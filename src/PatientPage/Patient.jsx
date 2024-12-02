@@ -20,7 +20,6 @@ export default function Patient() {
 
         const fetchPatientHistory = async () => {
             const response = await getPatientHistoryRequest(id);
-            console.log(response);
             if (response.data !== undefined && response.data.length !== 0) {
                 setNoHistories(false);
                 setHistory(response.data);

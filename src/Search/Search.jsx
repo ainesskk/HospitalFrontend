@@ -8,7 +8,6 @@ export default function Search() {
     useEffect(() => {
         const roleFromStorage = sessionStorage.getItem('role');
         setRole(roleFromStorage);
-        console.log("роль в поиске ", roleFromStorage);
     }, []);
 
     if (role === "") {

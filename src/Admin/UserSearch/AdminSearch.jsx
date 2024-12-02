@@ -5,15 +5,19 @@ import SearchUser from "./SearchUser.jsx";
 import "./AdminSearch.css";
 
 export default function AdminSearch() {
-    // Считывание сохраненного состояния из sessionStorage
     const [searchString, setSearchString] = useState(() => sessionStorage.getItem("searchString") || "");
     const [users, setUsers] = useState([]);
     const [noUsers, setNoUsers] = useState(false);
 
     useEffect(() => {
         sessionStorage.setItem("searchString", searchString);
-        userSearch();
-    }, [users]);
+        if (searchString !== "") {
+            userSearch();
+        } else {
+            setNoUsers(true);
+            setUsers([]);
+        }
+    }, [searchString]);
 
     const handleChange = (e) => {
         setSearchString(e.target.value);
@@ -21,11 +25,16 @@ export default function AdminSearch() {
 
     const buttonClick = async (e) => {
         e.preventDefault();
-        setNoUsers(true);
         userSearch();
     };
 
-    async function userSearch(){
+    async function userSearch() {
+        if (searchString === "") {
+            setNoUsers(true);
+            setUsers([]);
+            return;
+        }
+
         const response = await getUserInfoWithFio(searchString);
         if (response.data !== undefined) {
             if (response.data.length !== 0) {
@@ -43,7 +52,7 @@ export default function AdminSearch() {
 
     return (
         <>
-            <form className="search-user-form">
+            <form className="search-user-form" onSubmit={buttonClick}>
                 <input
                     className="search-input"
                     type="text"
@@ -51,7 +60,7 @@ export default function AdminSearch() {
                     value={searchString}
                     onChange={handleChange}
                 />
-                <button className="search-img-container" onClick={buttonClick}>
+                <button className="search-img-container" type="submit">
                     <img className="search-img" src="../../src/assets/search.svg" alt="search" />
                 </button>
             </form>

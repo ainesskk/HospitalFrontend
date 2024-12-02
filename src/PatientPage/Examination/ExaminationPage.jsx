@@ -17,7 +17,6 @@ export default function ExaminationPage() {
         const fetchExamination = async () => {
             const response = await getExaminationInfoRequest(examinationId);
             setExamination(response.data);
-            console.log(examination);
         };
         fetchExamination();
     }, [examinationId]);

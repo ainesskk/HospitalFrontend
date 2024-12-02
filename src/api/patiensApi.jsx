@@ -8,7 +8,6 @@ export async function searchPatientsRequest(searchString) {
         const response = await axios.get(`${basicUrl}/Patient/Fio/${searchString}`, {
             headers: { "Authorization": `Bearer ${getLsToken()}` }
         });
-        console.log(response.data)
         return response;
     }catch(err){
         console.log(err);
@@ -22,7 +21,6 @@ export async function getPatientInfoRequest(patientId) {
         const response = await axios.get(`${basicUrl}/Patient/${patientId}`, {
             headers: { "Authorization": `Bearer ${getLsToken()}` }
         });
-        console.log(response.data)
         return response.data;
     }catch(err){
         console.log(err);
@@ -36,7 +34,6 @@ export async function getPatientHistoryRequest(patientId) {
         const response = await axios.get(`${basicUrl}/Patient/${patientId}/History`, {
             headers: { "Authorization": `Bearer ${getLsToken()}` }
         });
-        console.log(response)
         return response;
     }catch(err){
         console.log(err);
@@ -50,7 +47,6 @@ export async function getHistoryInfoRequest(historyId) {
         const response = await axios.get(`${basicUrl}/History/${historyId}`, {
             headers: { "Authorization": `Bearer ${getLsToken()}` }
         });
-        console.log(response)
         return response.data;
     }catch(err){
         console.log(err);
@@ -64,7 +60,6 @@ export async function historyAddRequest(patientId, requestData) {
         const response = await axios.post(`${basicUrl}/Patient/${patientId}/History`, requestData, {
             headers: { "Authorization": `Bearer ${getLsToken()}` }
         });
-        console.log(response)
         return response.status;
     }catch(err){
         console.log(err);
@@ -75,12 +70,9 @@ export async function historyAddRequest(patientId, requestData) {
 //Функция отправки запроса для изменения истории болезни пациента.
 export async function historyEditRequest(historyId, requestData) {
     try{
-        console.log(historyId);
-        console.log(requestData);
         const response = await axios.put(`${basicUrl}/History/${historyId}`, requestData, {
             headers: { "Authorization": `Bearer ${getLsToken()}` }
         });
-        console.log(response)
         return response.status;
     }catch(err){
         console.log(err);
@@ -94,7 +86,6 @@ export async function getExaminationsInfoRequest(historyId) {
         const response = await axios.get(`${basicUrl}/History/${historyId}/Examination`, {
             headers: { "Authorization": `Bearer ${getLsToken()}` }
         });
-        console.log("getExaminationsInfoRequest ", response)
         return response;
     }catch(err){
         console.log(err);
@@ -108,7 +99,6 @@ export async function getExaminationInfoRequest(examinationId) {
         const response = await axios.get(`${basicUrl}/Examination/${examinationId}`, {
             headers: { "Authorization": `Bearer ${getLsToken()}` }
         });
-        console.log("getExaminationInfoRequest ", response)
         return response;
     }catch(err){
         console.log(err);
@@ -122,7 +112,6 @@ export async function examinationAddRequest(historyId, requestData) {
         const response = await axios.post(`${basicUrl}/History/${historyId}/Examination`, requestData, {
             headers: { "Authorization": `Bearer ${getLsToken()}` }
         });
-        console.log(response)
         return response.status;
     }catch(err){
         console.log(err);
@@ -136,7 +125,6 @@ export async function examinationDeleteRequest(examinationId) {
         const response = await axios.delete(`${basicUrl}/Examination/${examinationId}`,{
             headers: { "Authorization": `Bearer ${getLsToken()}` }
         });
-        console.log(response)
         return response.status;
     }catch(err){
         console.log(err);
@@ -150,7 +138,6 @@ export async function examinationEditRequest(examinationId, requestData) {
         const response = await axios.put(`${basicUrl}/Examination/${examinationId}`, requestData, {
             headers: { "Authorization": `Bearer ${getLsToken()}` }
         });
-        console.log(response.status);
         return response.status;
     }catch(err){
         return err.status;
@@ -163,7 +150,6 @@ export async function appointmentInfoRequest(historyId) {
         const response = await axios.get(`${basicUrl}/History/${historyId}/Appointment`, {
             headers: { "Authorization": `Bearer ${getLsToken()}` }
         });
-        console.log(response);
         return response;
     }catch(err){
         return err.status;

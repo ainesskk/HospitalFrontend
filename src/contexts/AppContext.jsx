@@ -1,7 +1,6 @@
 import { createContext, useEffect, useState } from 'react';
 import PropTypes from "prop-types";
 import { getUserRole } from "../api/userApi.jsx";
-import {setLsRole} from "../api/localStorageFunctions.jsx";
 
 export const AppContext = createContext(null);
 
@@ -16,7 +15,6 @@ export const AppProvider = ({ children }) => {
                 const role = await getUserRole();
                 setRole(role);
                 sessionStorage.setItem('role', role);
-                console.log("роль в контексте ", role);
             };
 
             fetchUserRole();
