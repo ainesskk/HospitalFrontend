@@ -1,26 +1,36 @@
 import PropTypes from "prop-types";
 import { useState, useEffect, useContext } from "react";
-import { getAnalysisRequest, postMarkRequest } from "../../api/patiensApi.jsx";
+import {getAnalysisRequest, getAppointmentIfoRequest, postMarkRequest} from "../../api/patiensApi.jsx";
 import "./Appointment.css";
 import { AppContext } from "../../contexts/AppContext.jsx";
 import Analysis from "../Analysis/Analysis.jsx";
 import { useNavigate, useParams } from "react-router-dom";
 
-export default function Appointment({ appointment }) {
+export default function Appointment({ appointmentId }) {
     const navigate = useNavigate();
     const { patientId } = useParams();
     const [analysis, setAnalysis] = useState({});
+    const [appointment, setAppointment] = useState({});
     const { isDoctor } = useContext(AppContext);
     const [hasAnalysis, setHasAnalysis] = useState(false);
+    const [isMarked, setIsMarked] = useState(false);
+
     useEffect(() => {
+        const fetchAppointment = async () => {
+            const data = await getAppointmentIfoRequest(appointmentId);
+            setAppointment(data);
+        }
         const fetchAnalysis = async () => {
-            const data = await getAnalysisRequest(appointment.id);
+            const data = await getAnalysisRequest(appointmentId);
             setAnalysis(data);
             if (Object.keys(data).length !== 0) setHasAnalysis(true);
             console.log(data);
         };
+
+        fetchAppointment();
         fetchAnalysis();
-    }, [appointment.id]);
+        setIsMarked(false)
+    }, [isMarked]);
 
     const handlerAddAnalysis = () => {
         navigate(`/patient/${patientId}/appointment/${appointment.id}/addanalysis`);
@@ -29,7 +39,7 @@ export default function Appointment({ appointment }) {
     const handlerMarkAnalysis = async () => {
         const status = await postMarkRequest(appointment.id);
         if (status === 201) {
-            window.location.reload()
+            setIsMarked(true)
         }
         console.log(status);
         console.log(appointment.id);
@@ -69,15 +79,5 @@ export default function Appointment({ appointment }) {
 }
 
 Appointment.propTypes = {
-    appointment: PropTypes.shape({
-        id: PropTypes.string.isRequired,
-        patientFio: PropTypes.string.isRequired,
-        content: PropTypes.string.isRequired,
-        date: PropTypes.string.isRequired,
-        doctorFio: PropTypes.string.isRequired,
-        isMarked: PropTypes.bool,
-        markDate: PropTypes.string,
-        fioMarkedBy: PropTypes.string,
-        examinationId: PropTypes.string.isRequired
-    }).isRequired,
+    appointmentId: PropTypes.string.isRequired,
 };

@@ -13,7 +13,7 @@ export default function AppointmentsList({ appointments, noAppointments}) {
                 <div className="all-appointments-container">
                     {appointments.map(appointment => (
                         <div className="appointments-container" key={appointment.id}>
-                            <Appointment appointment={appointment}/>
+                            <Appointment appointmentId={appointment.id}/>
                         </div>
                     ))}
                 </div>

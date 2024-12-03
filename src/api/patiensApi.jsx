@@ -233,3 +233,16 @@ export async function postMarkRequest(appointmentId) {
         return err.status;
     }
 }
+
+//Функция отправки запроса для получения информации о назначения пациента.
+export async function getAppointmentIfoRequest(appointmentId) {
+    try{
+        const response = await axios.get(`${basicUrl}/Appointment/${appointmentId}`, {
+            headers: { "Authorization": `Bearer ${getLsToken()}` }
+        });
+        return response.data;
+    }catch(err){
+        console.log(err);
+        return err.status;
+    }
+}
