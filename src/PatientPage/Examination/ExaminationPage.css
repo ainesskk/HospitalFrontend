@@ -1,12 +1,21 @@
 .examination-page-container{
+    width: 80%;
+    margin: 0 auto;
+    padding: 2vw 0 0 0;
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+}
+
+.examination-info-container{
     display: flex;
     flex-direction: column;
     background-color: white;
     padding: 2vw;
     border-radius: 15px;
     box-shadow: 3px 3px 15px 3px rgba(0, 0, 0, 0.39);
-    width: 80%;
-    margin: 2vw auto;
+    width: 95%;
+    margin: 0 auto;
     text-align: left;
     line-height: 2vw;
 }
@@ -17,5 +26,27 @@
 }
 
 .examination-page-buttons button{
+    margin-left: 2vw;
+}
+
+.all-appointments-container{
+    width: 100%;
+    margin: 0 auto;
+}
+
+.appointment-container-info{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin: 2vw 0;
+}
+
+.appointment-container-info h2 {
+    color: #000000;
+    font-size: 1.7vw;
+    margin: 0;
+}
+
+.appointment-container-info button {
     margin-left: 2vw;
 }

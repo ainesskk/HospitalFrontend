@@ -1,9 +1,10 @@
 import { useParams, useNavigate } from "react-router-dom";
-import { useEffect, useState } from "react";
+import {useContext, useEffect, useState} from "react";
 import { getPatientHistoryRequest, getPatientInfoRequest } from "../api/patiensApi.jsx";
 import HistorySearch from "./History/HistorySearch.jsx";
 import "./Patient.css";
 import Arrow from "../Arrow/Arrow.jsx";
+import {AppContext} from "../contexts/AppContext.jsx";
 
 export default function Patient() {
     const { id } = useParams();
@@ -11,6 +12,7 @@ export default function Patient() {
     const [history, setHistory] = useState([]);
     const [noHistories, setNoHistories] = useState(false);
     const navigate = useNavigate();
+    const {isDoctor} = useContext(AppContext);
 
     useEffect(() => {
         const fetchPatientInfo = async () => {
@@ -51,7 +53,7 @@ export default function Patient() {
                 </div>
                 <div className="patient-histories-container">
                     <h2>Истории болезней</h2>
-                    <button className="add-history" onClick={addHistory}>Добавить</button>
+                    { isDoctor && <button className="add-history" onClick={addHistory}>Добавить</button>}
                 </div>
                 {noHistories ? (
                     <p className="no-results">Нет результатов</p>

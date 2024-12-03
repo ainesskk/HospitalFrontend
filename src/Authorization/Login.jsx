@@ -7,7 +7,7 @@ import { getUserRole } from "../api/userApi.jsx";
 
 export default function Login() {
     const navigate = useNavigate();
-    const { setIsRoleSet } = useContext(AppContext);
+    const { setIsRoleSet, setIsDoctor } = useContext(AppContext);
     const [data, setData] = useState({ login: "", password: "" });
     const [notification, setNotification] = useState(" ");
 
@@ -28,6 +28,14 @@ export default function Login() {
             const role = await getUserRole();
             sessionStorage.setItem('role', role);
             setIsRoleSet(true);
+            if (role === "Doctor") {
+                setIsDoctor(true);
+                sessionStorage.setItem('isDoctor', 'true');
+            } else {
+                setIsDoctor(false);
+                sessionStorage.setItem('isDoctor', 'false');
+            }
+
             navigate("/");
         } else {
             setNotification("Неверный логин или пароль");

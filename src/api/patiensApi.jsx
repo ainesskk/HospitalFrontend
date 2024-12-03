@@ -145,9 +145,21 @@ export async function examinationEditRequest(examinationId, requestData) {
 }
 
 //Функция отправки запроса для получения всех назначений пациента по истории болезни.
-export async function appointmentInfoRequest(historyId) {
+export async function appointmentInfoRequestHistory(historyId) {
     try{
         const response = await axios.get(`${basicUrl}/History/${historyId}/Appointment`, {
+            headers: { "Authorization": `Bearer ${getLsToken()}` }
+        });
+        return response;
+    }catch(err){
+        return err.status;
+    }
+}
+
+//Функция отправки запроса для получения всех назначений пациента по истории осмотру.
+export async function appointmentInfoRequestExamination(examinationId) {
+    try{
+        const response = await axios.get(`${basicUrl}/Examination/${examinationId}/Appointment`, {
             headers: { "Authorization": `Bearer ${getLsToken()}` }
         });
         return response;

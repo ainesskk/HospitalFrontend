@@ -13,6 +13,18 @@
     margin: 1vw auto;
 }
 
+.appointment-container{
+    width: 100%;
+}
+
+.appointment-container-info{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin: 2vw 0;
+    width: 80%;
+}
+
 .all-appointments-container p {
     line-height: 2vw;
     text-align: left;
@@ -33,6 +45,7 @@
 }
 
 .no-results-appointment{
+    text-align: center;
     font-size: 1.5vw;
     padding-top: 1vw;
     padding-bottom: 1vw;

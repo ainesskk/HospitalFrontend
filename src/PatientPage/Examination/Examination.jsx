@@ -15,7 +15,7 @@ export default function Examination({examination}) {
 Examination.propTypes = {
     examination: PropTypes.shape({
         date: PropTypes.string,
-        conclusion: PropTypes.string.isRequired,
-        doctorFio: PropTypes.string.isRequired
+        conclusion: PropTypes.string,
+        doctorFio: PropTypes.string
     }).isRequired
 };

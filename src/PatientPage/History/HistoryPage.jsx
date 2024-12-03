@@ -1,7 +1,7 @@
 import { useNavigate, useParams } from "react-router-dom";
-import { useEffect, useState } from "react";
+import {useContext, useEffect, useState} from "react";
 import {
-    appointmentInfoRequest,
+    appointmentInfoRequestHistory,
     getExaminationsInfoRequest,
     getHistoryInfoRequest
 } from "../../api/patiensApi.jsx";
@@ -9,11 +9,13 @@ import Arrow from "../../Arrow/Arrow.jsx";
 import ExaminationsList from "../Examination/ExaminationList.jsx";
 import AppointmentsList from "../Appointment/AppointmenstList.jsx";
 import "./HistoryPage.css"
+import {AppContext} from "../../contexts/AppContext.jsx";
 
 export default function HistoryPage() {
     const navigate = useNavigate();
     const { patientId, historyId } = useParams();
     const [historyInfo, setHistoryInfo] = useState({});
+    const {isDoctor} = useContext(AppContext);
 
     const [noExaminations, setNoExaminations] = useState(true);
     const [examinations, setExaminations] = useState([]);
@@ -39,7 +41,7 @@ export default function HistoryPage() {
         };
 
         const fetchAppointments = async () => {
-            const response = await appointmentInfoRequest(historyId);
+            const response = await appointmentInfoRequestHistory(historyId);
             if (response.data !== undefined && response.data.length !== 0) {
                 setNoAppointments(false);
                 setAppointments(response.data);
@@ -76,14 +78,17 @@ export default function HistoryPage() {
                     <p><b>Анамнез жизни: </b>{historyInfo.lifeAnamnesis}</p>
                     <p><b>Анамнез болезни: </b>{historyInfo.diseaseAnamnesis}</p>
                     <p><b>Эпикриз: </b>{historyInfo.epicrisis}</p>
-                    <div className="edit-history-button">
-                        <button className="edit-history" onClick={handleEditHistory}>Редактировать историю</button>
-                    </div>
+
+                    {
+                        isDoctor && <div className="edit-history-button">
+                                        <button className="edit-history" onClick={handleEditHistory}>Редактировать историю</button>
+                                    </div>
+                    }
                 </div>
                 <div className="examinations-container">
                     <div className="examination-container-info">
                         <h2>Осмотры</h2>
-                        <button className="add-examination" onClick={handleAddExamination}>Добавить осмотр</button>
+                        { isDoctor && <button className="add-examination" onClick={handleAddExamination}>Добавить осмотр</button>}
                     </div>
 
                     <ExaminationsList

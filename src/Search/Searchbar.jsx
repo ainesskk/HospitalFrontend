@@ -1,12 +1,14 @@
 import "./Searchbar.css";
 import SearchPatient from "./SearchPatient.jsx";
 import { searchPatientsRequest } from "../api/patiensApi.jsx";
-import { useEffect, useState } from "react";
+import {useContext, useEffect, useState} from "react";
 import {useNavigate} from "react-router-dom";
+import {AppContext} from "../contexts/AppContext.jsx";
 
 export default function Searchbar() {
     const navigate = useNavigate();
     const [patients, setPatients] = useState([]);
+    const {isDoctor} = useContext(AppContext);
     const [noPatients, setNoPatients] = useState(true);
     const [searchString, setSearchString] = useState(() => sessionStorage.getItem("searchString") || "");
 
@@ -68,9 +70,13 @@ export default function Searchbar() {
                 <button className="search-img-container" type="submit">
                     <img className="search-img" src="../src/assets/search.svg" alt="search"/>
                 </button>
-                <div className="add-patient-container">
-                    <button className="add-patient" onClick={handlerAddPatient}>Добавить пациента</button>
-                </div>
+                {
+                    isDoctor &&
+                        <div className="add-patient-container">
+                            <button className="add-patient" onClick={handlerAddPatient}>Добавить пациента</button>
+                        </div>
+                }
+
             </form>
             {
                 noPatients ? (
