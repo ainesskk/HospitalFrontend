@@ -53,7 +53,7 @@ export default function ExaminationPage() {
     };
 
     const handleAddAppointment = () => {
-        navigate(`/patient/${examination.patientId}/editexamination/${id}`);
+        navigate(`/patient/${examination.patientId}/${examinationId}/addappointment`);
     }
 
     return (

@@ -106,7 +106,7 @@ export async function getExaminationInfoRequest(examinationId) {
     }
 }
 
-//Функция отправки запроса для создания назначения для истории болезни пациента.
+//Функция отправки запроса для создания осмотра для истории болезни пациента.
 export async function examinationAddRequest(historyId, requestData) {
     try{
         const response = await axios.post(`${basicUrl}/History/${historyId}/Examination`, requestData, {
@@ -119,7 +119,7 @@ export async function examinationAddRequest(historyId, requestData) {
     }
 }
 
-//Функция отправки запроса для удаления назначения для истории болезни пациента.
+//Функция отправки запроса для удаления осмотра по истории болезни пациента.
 export async function examinationDeleteRequest(examinationId) {
     try{
         const response = await axios.delete(`${basicUrl}/Examination/${examinationId}`,{
@@ -168,12 +168,65 @@ export async function appointmentInfoRequestExamination(examinationId) {
     }
 }
 
-//Функция отправки запроса для создания назначения для истории болезни пациента.
+//Функция отправки запроса для создания пациента.
 export async function patientAddRequest(requestData) {
     try{
         const response = await axios.post(`${basicUrl}/Patient`, requestData, {
             headers: { "Authorization": `Bearer ${getLsToken()}` }
         });
+        return response.status;
+    }catch(err){
+        console.log(err);
+        return err.status;
+    }
+}
+
+//Функция отправки запроса для создания назначения по осмотру пациента.
+export async function appointmentAddRequest(examinationId, requestData) {
+    try{
+        const response = await axios.post(`${basicUrl}/Examination/${examinationId}/Appointment`, requestData, {
+            headers: { "Authorization": `Bearer ${getLsToken()}` }
+        });
+        return response.status;
+    }catch(err){
+        console.log(err);
+        return err.status;
+    }
+}
+
+//Функция отправки запроса для загрузки анализа по назначению пациента.
+export async function getAnalysisRequest(appointmentId) {
+    try{
+        const response = await axios.get(`${basicUrl}/Appointment/${appointmentId}/Analysis`, {
+            headers: { "Authorization": `Bearer ${getLsToken()}` }
+        });
+        return response.data;
+    }catch(err){
+        console.log(err);
+        return err.status;
+    }
+}
+
+//Функция отправки запроса для добавления анализа по назначению пациента.
+export async function analysisAddRequest(appointmentId, requestData) {
+    try{
+        const response = await axios.post(`${basicUrl}/Appointment/${appointmentId}/Analysis`, requestData, {
+            headers: { "Authorization": `Bearer ${getLsToken()}` }
+        });
+        return response.status;
+    }catch(err){
+        console.log(err);
+        return err.status;
+    }
+}
+
+//Функция отправки запроса для пометки выполнения назначения пациента.
+export async function postMarkRequest(appointmentId) {
+    try{
+        const response = await axios.post(`${basicUrl}/Appointment/${appointmentId}/Mark`, {}, {
+            headers: { "Authorization": `Bearer ${getLsToken()}` }
+        });
+        console.log(response);
         return response.status;
     }catch(err){
         console.log(err);

@@ -2,7 +2,8 @@ import PropTypes from "prop-types";
 import Appointment from "./Appointment.jsx";
 import "./AppointmentList.css"
 
-export default function AppointmentsList({ appointments, noAppointments }) {
+export default function AppointmentsList({ appointments, noAppointments}) {
+
 
     return (
         <>
@@ -12,7 +13,7 @@ export default function AppointmentsList({ appointments, noAppointments }) {
                 <div className="all-appointments-container">
                     {appointments.map(appointment => (
                         <div className="appointments-container" key={appointment.id}>
-                            <Appointment appointment={appointment} />
+                            <Appointment appointment={appointment}/>
                         </div>
                     ))}
                 </div>

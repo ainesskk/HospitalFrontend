@@ -34,7 +34,7 @@ export default function AddExamination () {
 
         const response = await examinationAddRequest(historyId, requestData);
         if (response === 201) {
-            setNotification("Назначение успешно добавлено")
+            setNotification("Осмотр успешно добавлен")
             setNotificationType("success");
         }
         else {

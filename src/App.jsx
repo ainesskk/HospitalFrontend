@@ -15,6 +15,8 @@ import BlockRoute from "./BlockRoute.jsx";
 import UserPage from "./Admin/UserSearch/UserPage.jsx";
 import EditUser from "./Admin/UserSearch/EditUser.jsx";
 import AddPatient from "./Search/AddPatient.jsx";
+import AddAppointment from "./PatientPage/Appointment/AddAppointment.jsx";
+import AddAnalysis from "./PatientPage/Analysis/AddAnalysis.jsx";
 
 function App() {
 
@@ -71,6 +73,16 @@ function App() {
                     <Route path="/patient/:patientId/examination/:examinationId" element={
                         <PrivateRoute>
                             <ExaminationPage />
+                        </PrivateRoute>
+                    } />
+                    <Route path="/patient/:patientId/:examinationId/addappointment" element={
+                        <PrivateRoute>
+                            <AddAppointment />
+                        </PrivateRoute>
+                    } />
+                    <Route path="/patient/:patientId/appointment/:appointmentId/addanalysis" element={
+                        <PrivateRoute>
+                            <AddAnalysis />
                         </PrivateRoute>
                     } />
                     <Route path="/user/:userId" element={

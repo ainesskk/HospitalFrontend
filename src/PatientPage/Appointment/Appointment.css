@@ -1,0 +1,16 @@
+.button-analysis-container{
+
+}
+
+.analysis-buttons-container{
+    display: flex;
+    justify-content: flex-end;
+}
+
+.analysis-buttons-container button{
+    margin-left: 1vw;
+}
+
+.analysis-container h3{
+    font-size: 1.5vw;
+}
