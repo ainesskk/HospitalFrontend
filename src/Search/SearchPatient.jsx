@@ -23,12 +23,11 @@ export default function SearchPatient({ userData }) {
 }
 
 SearchPatient.propTypes = {
-    userData: PropTypes.arrayOf(
-        PropTypes.shape({
+    userData: PropTypes.shape({
             id: PropTypes.string.isRequired,
             fio: PropTypes.string.isRequired,
             birthDate: PropTypes.string.isRequired,
             passport: PropTypes.string.isRequired
-        })
+        }
     ).isRequired
 }

@@ -2,8 +2,10 @@ import "./Searchbar.css";
 import SearchPatient from "./SearchPatient.jsx";
 import { searchPatientsRequest } from "../api/patiensApi.jsx";
 import { useEffect, useState } from "react";
+import {useNavigate} from "react-router-dom";
 
 export default function Searchbar() {
+    const navigate = useNavigate();
     const [patients, setPatients] = useState([]);
     const [noPatients, setNoPatients] = useState(true);
     const [searchString, setSearchString] = useState(() => sessionStorage.getItem("searchString") || "");
@@ -49,6 +51,10 @@ export default function Searchbar() {
         }
     };
 
+    const handlerAddPatient = () => {
+        navigate(`/addpatient`)
+    }
+
     return (
         <>
             <form className="search-form" onSubmit={buttonClick}>
@@ -60,18 +66,22 @@ export default function Searchbar() {
                     onChange={handleChange}
                 />
                 <button className="search-img-container" type="submit">
-                    <img className="search-img" src="../src/assets/search.svg" alt="search" />
+                    <img className="search-img" src="../src/assets/search.svg" alt="search"/>
                 </button>
-            </form>
-            {noPatients ? (
-                <p className="no-results">Нет результатов</p>
-            ) : (
-                <div className="search-all-patients-container">
-                    {patients.map((patient) => (
-                        <SearchPatient key={patient.id} userData={patient} />
-                    ))}
+                <div className="add-patient-container">
+                    <button className="add-patient" onClick={handlerAddPatient}>Добавить пациента</button>
                 </div>
-            )}
+            </form>
+            {
+                noPatients ? (
+                    <p className="no-results">Нет результатов</p>
+                ) : (
+                    <div className="search-all-patients-container">
+                        {patients.map((patient) => (
+                            <SearchPatient key={patient.id} userData={patient}/>
+                        ))}
+                    </div>
+                )}
         </>
     );
 }

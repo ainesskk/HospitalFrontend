@@ -3,8 +3,10 @@ import { useEffect, useState } from "react";
 import { getUserInfoWithFio } from "../../api/userApi.jsx";
 import SearchUser from "./SearchUser.jsx";
 import "./AdminSearch.css";
+import {useNavigate} from "react-router-dom";
 
 export default function AdminSearch() {
+    const navigate = useNavigate();
     const [searchString, setSearchString] = useState(() => sessionStorage.getItem("searchString") || "");
     const [users, setUsers] = useState([]);
     const [noUsers, setNoUsers] = useState(false);
@@ -50,6 +52,10 @@ export default function AdminSearch() {
         }
     }
 
+    // const handlerAddUser = () => {
+    //     navigate(``)
+    // }
+
     return (
         <>
             <form className="search-user-form" onSubmit={buttonClick}>
@@ -61,14 +67,17 @@ export default function AdminSearch() {
                     onChange={handleChange}
                 />
                 <button className="search-img-container" type="submit">
-                    <img className="search-img" src="../../src/assets/search.svg" alt="search" />
+                    <img className="search-img" src="../../src/assets/search.svg" alt="search"/>
                 </button>
+                {/*<div className="add-user-container">*/}
+                {/*    <button className="add-user" onClick={handlerAddUser}>Добавить пользователя</button>*/}
+                {/*</div>*/}
             </form>
             {noUsers ? (
                 <p className="no-results">Нет результатов</p>
             ) : (
                 <div className="search-all-users-container">
-                    {users.map((user) => (
+                {users.map((user) => (
                         <SearchUser key={user.id} userData={user} />
                     ))}
                 </div>

@@ -14,6 +14,7 @@ import PrivateRoute from "./PrivateRoute.jsx";
 import BlockRoute from "./BlockRoute.jsx";
 import UserPage from "./Admin/UserSearch/UserPage.jsx";
 import EditUser from "./Admin/UserSearch/EditUser.jsx";
+import AddPatient from "./Search/AddPatient.jsx";
 
 function App() {
 
@@ -30,6 +31,11 @@ function App() {
                     <Route path="/" element={
                         <PrivateRoute>
                             <Search />
+                        </PrivateRoute>
+                    } />
+                    <Route path="/addpatient" element={
+                        <PrivateRoute>
+                            <AddPatient />
                         </PrivateRoute>
                     } />
                     <Route path="/patient/:id" element={

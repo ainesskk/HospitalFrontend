@@ -36,7 +36,6 @@ export default function HistoryPage() {
                 setNoExaminations(true);
                 setExaminations([]);
             }
-            console.log(examinations);
         };
 
         const fetchAppointments = async () => {
@@ -48,7 +47,6 @@ export default function HistoryPage() {
                 setNoAppointments(true);
                 setAppointments([]);
             }
-            console.log(examinations);
         };
 
         fetchHistoryInfo();

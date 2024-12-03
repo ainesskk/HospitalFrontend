@@ -3,13 +3,13 @@
     margin: 0 auto;
     padding-top: 2vw;
     display: flex;
-    align-items: stretch;
+    align-items: center;
     height: 4vw;
 }
 
 .search-form input {
     margin: 0;
-    width: 90%;
+    width: 68%;
     height: 100%;
     border: 2px solid #0097B3;
     border-right: none;
@@ -18,7 +18,7 @@
     box-sizing: border-box;
 }
 
-.search-form button {
+.search-form .search-img-container{
     width: 10%;
     height: 100%;
     border-left: none;
@@ -31,6 +31,17 @@
     align-items: center;
 }
 
+.add-patient-container{
+    display: flex;
+    margin-left: 2vw;
+}
+
+.add-patient button{
+    width: 20%;
+    margin-left: 2vw;
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
+}
 
 .search-img-container img {
     height: 2vw;

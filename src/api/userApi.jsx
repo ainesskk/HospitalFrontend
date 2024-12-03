@@ -79,3 +79,16 @@ export async function editUserRequest(userId, requestData) {
         return err.status;
     }
 }
+
+//Функция отправки запроса для создания пользователя.
+// export async function userAddRequest(requestData) {
+//     try{
+//         const response = await axios.post(`${basicUrl}/User`, requestData, {
+//             headers: { "Authorization": `Bearer ${getLsToken()}` }
+//         });
+//         return response.status;
+//     }catch(err){
+//         console.log(err);
+//         return err.status;
+//     }
+// }

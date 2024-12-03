@@ -155,3 +155,16 @@ export async function appointmentInfoRequest(historyId) {
         return err.status;
     }
 }
+
+//Функция отправки запроса для создания назначения для истории болезни пациента.
+export async function patientAddRequest(requestData) {
+    try{
+        const response = await axios.post(`${basicUrl}/Patient`, requestData, {
+            headers: { "Authorization": `Bearer ${getLsToken()}` }
+        });
+        return response.status;
+    }catch(err){
+        console.log(err);
+        return err.status;
+    }
+}
