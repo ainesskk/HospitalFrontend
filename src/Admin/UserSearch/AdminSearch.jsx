@@ -52,9 +52,9 @@ export default function AdminSearch() {
         }
     }
 
-    // const handlerAddUser = () => {
-    //     navigate(``)
-    // }
+    const handlerAddUser = () => {
+        navigate('/adduser')
+    }
 
     return (
         <>
@@ -69,9 +69,9 @@ export default function AdminSearch() {
                 <button className="search-img-container" type="submit">
                     <img className="search-img" src="../../src/assets/search.svg" alt="search"/>
                 </button>
-                {/*<div className="add-user-container">*/}
-                {/*    <button className="add-user" onClick={handlerAddUser}>Добавить пользователя</button>*/}
-                {/*</div>*/}
+                <div className="add-user-container">
+                    <button className="add-user" onClick={handlerAddUser}>Добавить пользователя</button>
+                </div>
             </form>
             {noUsers ? (
                 <p className="no-results">Нет результатов</p>

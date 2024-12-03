@@ -1,42 +1,58 @@
 import Arrow from "../../Arrow/Arrow.jsx";
 import {useState} from "react";
-import {patientAddRequest} from "../../api/patiensApi.jsx";
 import "./AddUser.css"
+import {userAddRequest} from "../../api/userApi.jsx";
+import "./EditUser.css"
 
 export default function AddUser() {
-    const [newPatient, setNewPatient] = useState({
+    const [newUser, setNewUser] = useState({
         fio: "",
         telephone: "",
-        series: "",
-        number: "",
-        birthDate: "",
-        address: ""
+        login: "",
+        password: ""
     });
     const [notification, setNotification] = useState(" ");
     const [notificationType, setNotificationType] = useState("");
+    const [role, setRole] = useState("");
 
     const handleChange = (e) => {
-        setNewPatient({...newPatient, [e.target.name]: e.target.value});
+        setNewUser({...newUser, [e.target.name]: e.target.value});
+    }
+
+    const handleChangeRole = (e) => {
+        setRole(e.target.value);
     }
 
     const handleSubmit = async (e) => {
         e.preventDefault();
 
+        if (!newUser.fio.trim() || !newUser.telephone.trim() ||
+            !newUser.login.trim() || !newUser.password.trim() ||
+            (role === "0")) {
+            setNotification("Поля не могут быть пустыми");
+            setNotificationType("error");
+            return;
+        }
+
         const requestData = {
-            fio: newPatient.fio,
-            telephone: newPatient.telephone,
-            passport: newPatient.series + " " + newPatient.number,
-            birthDate: newPatient.birthDate,
-            address: newPatient.address,
+            fio: newUser.fio,
+            telephone: newUser.telephone,
+            login: newUser.login,
+            password: newUser.password,
+            role: parseInt(role),
         };
 
         console.log(requestData);
 
-        const response = await patientAddRequest(requestData);
+        const response = await userAddRequest(requestData);
         console.log(response);
         if (response === 201) {
-            setNotification("Пациент успешно добавлен")
+            setNotification("Пользователь успешно добавлен")
             setNotificationType("success");
+        }
+        else if(response === 409){
+            setNotification("Пользователь уже существует")
+            setNotificationType("error");
         }
         else {
             setNotification("Произошла ошибка при добавлении")
@@ -49,18 +65,18 @@ export default function AddUser() {
         <>
             <div className="add-patient-container">
                 <Arrow/>
-                <div className="add-patient-form-container">
-                    <form className="add-patient-form">
-                        <input type="text" name="fio" placeholder="ФИО пациента" required onChange={handleChange}/>
+                <div className="add-user-form-container">
+                    <form className="add-user-form">
+                        <input type="text" name="fio" placeholder="ФИО пользователя" required onChange={handleChange}/>
                         <input type="text" name="telephone" placeholder="Телефон" required onChange={handleChange}/>
-                        <div className="passport-data">
-                            <input type="text" name="series" placeholder="Серия паспорта" required
-                                   onChange={handleChange}/>
-                            <input type="text" name="number" placeholder="Номер парспорта" required
-                                   onChange={handleChange}/>
-                        </div>
-                        <input type="date" name="birthDate" placeholder="Дата рождения" required onChange={handleChange}/>
-                        <input type="text" name="address" placeholder="Адрес" required onChange={handleChange}/>
+                        <input type="text" name="login" placeholder="Логин" required onChange={handleChange}/>
+                        <input type="text" name="password" placeholder="Пароль" required onChange={handleChange}/>
+                        <select name="role" value={role} onChange={handleChangeRole}>
+                            <option value={0}>Выберите роль</option>
+                            <option value={1}>Администратор</option>
+                            <option value={2}>Врач</option>
+                            <option value={3}>Медсестра</option>
+                        </select>
                         <button type="submit" onClick={handleSubmit}>Добавить пациента</button>
                     </form>
                 </div>

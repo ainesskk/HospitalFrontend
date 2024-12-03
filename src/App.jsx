@@ -17,6 +17,7 @@ import EditUser from "./Admin/UserSearch/EditUser.jsx";
 import AddPatient from "./Search/AddPatient.jsx";
 import AddAppointment from "./PatientPage/Appointment/AddAppointment.jsx";
 import AddAnalysis from "./PatientPage/Analysis/AddAnalysis.jsx";
+import AddUser from "./Admin/UserSearch/AddUser.jsx";
 
 function App() {
 
@@ -93,6 +94,11 @@ function App() {
                     <Route path="/user/:userId/edituser" element={
                         <PrivateRoute>
                             <EditUser />
+                        </PrivateRoute>
+                    } />
+                    <Route path="/adduser" element={
+                        <PrivateRoute>
+                            <AddUser />
                         </PrivateRoute>
                     } />
                 </Routes>

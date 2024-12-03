@@ -18,7 +18,7 @@ export default function AddAppointment() {
         e.preventDefault();
 
         if (!appointment.trim()) {
-            setNotification("Поле 'Содержание' не может быть пустым.");
+            setNotification("Поле не может быть пустым.");
             setNotificationType("error");
             return;
         }

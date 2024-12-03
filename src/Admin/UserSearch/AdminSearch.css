@@ -9,7 +9,7 @@
 
 .search-user-form input {
     margin: 0;
-    width: 90%;
+    width: 65%;
     height: 100%;
     border: 2px solid #0097B3;
     border-right: none;
@@ -18,7 +18,7 @@
     box-sizing: border-box;
 }
 
-.search-user-form button {
+.search-user-form .search-img-container {
     width: 10%;
     height: 100%;
     border-left: none;
@@ -67,3 +67,12 @@
     margin-right: 2vw;
 }
 
+.add-user-container{
+    width: 25%;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.add-user-container button{
+    width: 90%;
+}

@@ -14,6 +14,7 @@ export default function EditUser() {
         role: 0
     });
     const [notification, setNotification] = useState(" ");
+    const [notificationType, setNotificationType] = useState("");
 
     useEffect(() => {
         const fetchUserInfo = async () => {
@@ -42,8 +43,10 @@ export default function EditUser() {
         const status = await editUserRequest(userId, requestData);
         if (status === 204) {
             setNotification("История успешно отредактирована");
+            setNotificationType("success");
         } else {
             setNotification("Произошла ошибка при редактировании");
+            setNotificationType("error");
         }
     };
 
@@ -98,7 +101,7 @@ export default function EditUser() {
                         <button type="submit">Сохранить изменения</button>
                     </form>
                 </div>
-                <pre className="notification">{notification}</pre>
+                <pre className={`notification ${notificationType}`}>{notification}</pre>
             </div>
         </>
     );

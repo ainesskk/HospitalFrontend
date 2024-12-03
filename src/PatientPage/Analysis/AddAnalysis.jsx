@@ -2,6 +2,7 @@ import Arrow from "../../Arrow/Arrow.jsx";
 import { useParams } from "react-router-dom";
 import { useState } from "react";
 import { analysisAddRequest } from "../../api/patiensApi.jsx";
+import "./AddAnalysis.css"
 
 export default function AddAnalysis() {
     const { appointmentId } = useParams();
