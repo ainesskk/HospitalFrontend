@@ -9,7 +9,6 @@ export default function AddHistory() {
     const [newHistory, setNewHistory] = useState({
         diagnosis: "",
         arriveDate: "",
-        departureDate: "",
         lifeAnamnesis: "",
         diseaseAnamnesis: "",
         epicrisis: "",
@@ -28,7 +27,7 @@ export default function AddHistory() {
         const requestData = {
             diagnosis: newHistory.diagnosis,
             arriveDate: newHistory.arriveDate,
-            departureDate: newHistory.departureDate,
+            departureDate: null,
             lifeAnamnesis: newHistory.lifeAnamnesis,
             diseaseAnamnesis: newHistory.diseaseAnamnesis,
             epicrisis: newHistory.epicrisis,
@@ -55,8 +54,6 @@ export default function AddHistory() {
                     <form className="add-history-form">
                         <input type="text" name="diagnosis" placeholder="Диагноз" required onChange={handleChange}/>
                         <input type="date" name="arriveDate" placeholder="Дата прибытия" required
-                               onChange={handleChange}/>
-                        <input type="date" name="departureDate" placeholder="Дата выписки" required
                                onChange={handleChange}/>
                         <textarea name="lifeAnamnesis" placeholder="Анамнез жизни" required
                                   onChange={handleChange}></textarea>
