@@ -49,7 +49,7 @@ export default function EditExamination() {
 
         const status = await examinationEditRequest(examinationId, requestData);
         if (status === 204) {
-            setNotification("Назначение успешно отредактировано");
+            setNotification("Осмотр успешно отредактирован");
             setNotificationType("success");
         } else {
             setNotification("Произошла ошибка при редактировании");

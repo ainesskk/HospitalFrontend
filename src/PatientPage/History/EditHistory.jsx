@@ -18,6 +18,7 @@ export default function EditHistory() {
     });
     const [doctorId, setDoctorId] = useState("");
     const [notification, setNotification] = useState(" ");
+    const [notificationType, setNotificationType] = useState("");
 
     useEffect(() => {
         const fetchHistoryInfo = async () => {
@@ -54,8 +55,11 @@ export default function EditHistory() {
         const status = await historyEditRequest(historyId, requestData);
         if (status === 204) {
             setNotification("История успешно отредактирована");
+            setNotificationType("success");
         } else {
             setNotification("Произошла ошибка при редактировании");
+
+            setNotificationType("error");
         }
     };
 
@@ -68,7 +72,7 @@ export default function EditHistory() {
                         <input type="text" name="diagnosis" placeholder="Диагноз" value={newHistory.diagnosis} required
                                onChange={handleChange}/>
                         <input type="date" name="departureDate" placeholder="Дата выписки"
-                               value={newHistory.departureDate} required onChange={handleChange}/>
+                               value={newHistory.departureDate} onChange={handleChange}/>
                         <textarea name="lifeAnamnesis" placeholder="Анамнез жизни" value={newHistory.lifeAnamnesis}
                                   required onChange={handleChange}></textarea>
                         <textarea name="diseaseAnamnesis" placeholder="Анамнез болезни"
@@ -81,7 +85,7 @@ export default function EditHistory() {
                         <button type="submit">Сохранить изменения</button>
                     </form>
                 </div>
-                    <pre className="notification">{notification}</pre>
+                    <pre className={`notification ${notificationType}`}>{notification}</pre>
                 </div>
             </>
             );

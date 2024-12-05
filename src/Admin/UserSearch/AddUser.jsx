@@ -77,7 +77,7 @@ export default function AddUser() {
                             <option value={2}>Врач</option>
                             <option value={3}>Медсестра</option>
                         </select>
-                        <button type="submit" onClick={handleSubmit}>Добавить пациента</button>
+                        <button type="submit" onClick={handleSubmit}>Добавить пользователя</button>
                     </form>
                 </div>
                 <pre className={`notification ${notificationType}`}>{notification}</pre>
