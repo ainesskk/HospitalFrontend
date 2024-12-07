@@ -18,6 +18,7 @@ import AddPatient from "./Search/AddPatient.jsx";
 import AddAppointment from "./PatientPage/Appointment/AddAppointment.jsx";
 import AddAnalysis from "./PatientPage/Analysis/AddAnalysis.jsx";
 import AddUser from "./Admin/UserSearch/AddUser.jsx";
+import Exit from "./Exit/Exit.jsx";
 
 function App() {
 
@@ -39,66 +40,79 @@ function App() {
                     <Route path="/addpatient" element={
                         <PrivateRoute>
                             <AddPatient />
+                            <Exit />
                         </PrivateRoute>
                     } />
                     <Route path="/patient/:id" element={
                         <PrivateRoute>
                             <Patient />
+                            <Exit />
                         </PrivateRoute>
                     } />
                     <Route path="/patient/:patientId/history/:historyId" element={
                         <PrivateRoute>
                             <HistoryPage />
+                            <Exit />
                         </PrivateRoute>
                     } />
                     <Route path="/patient/:id/addhistory" element={
                         <PrivateRoute>
                             <AddHistory />
+                            <Exit />
                         </PrivateRoute>
                     } />
                     <Route path="/patient/:patientId/edithistory/:historyId" element={
                         <PrivateRoute>
                             <EditHistory />
+                            <Exit />
                         </PrivateRoute>
                     } />
                     <Route path="/patient/:patientId/history/:historyId/addexamination" element={
                         <PrivateRoute>
                             <AddExamination />
+                            <Exit />
                         </PrivateRoute>
                     } />
                     <Route path="/patient/:patientId/editexamination/:examinationId" element={
                         <PrivateRoute>
                             <EditExamination />
+                            <Exit />
                         </PrivateRoute>
                     } />
                     <Route path="/patient/:patientId/examination/:examinationId" element={
                         <PrivateRoute>
                             <ExaminationPage />
+                            <Exit />
                         </PrivateRoute>
                     } />
                     <Route path="/patient/:patientId/:examinationId/addappointment" element={
                         <PrivateRoute>
                             <AddAppointment />
+                            <Exit />
                         </PrivateRoute>
                     } />
                     <Route path="/patient/:patientId/appointment/:appointmentId/addanalysis" element={
                         <PrivateRoute>
                             <AddAnalysis />
+                            <Exit />
                         </PrivateRoute>
                     } />
                     <Route path="/user/:userId" element={
                         <PrivateRoute>
                             <UserPage />
+                            <Exit />
                         </PrivateRoute>
                     } />
                     <Route path="/user/:userId/edituser" element={
                         <PrivateRoute>
                             <EditUser />
+                            <Exit />
                         </PrivateRoute>
                     } />
                     <Route path="/adduser" element={
                         <PrivateRoute>
                             <AddUser />
+                            <Exit />
                         </PrivateRoute>
                     } />
                 </Routes>

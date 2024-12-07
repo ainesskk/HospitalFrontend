@@ -1,6 +1,7 @@
 import Searchbar from "./Searchbar.jsx";
 import AdminSearch from "../Admin/UserSearch/AdminSearch.jsx";
 import { useEffect, useState } from "react";
+import Exit from "../Exit/Exit.jsx";
 
 export default function Search() {
     const [role, setRole] = useState("");
@@ -17,6 +18,7 @@ export default function Search() {
     return (
         <>
             {role === "Admin" ? <AdminSearch /> : <Searchbar />}
+            <Exit />
         </>
     );
 }
